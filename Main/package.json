@@ -1,0 +1,26 @@
+{
+  "name": "company-team-generator",
+  "version": "1.0.0",
+  "description": "A program that generates a layout of the company team",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coltonsmith135/company-team-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coltonsmith135/company-team-generator/issues"
+  },
+  "homepage": "https://github.com/coltonsmith135/company-team-generator#readme",
+  "dependencies": {
+    "async": "^3.2.4",
+    "gitignore": "^0.7.0",
+    "inquirer": "^8.2.4",
+    "jest": "^29.3.1"
+  }
+}
