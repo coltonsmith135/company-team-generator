@@ -12,18 +12,28 @@ const Intern = require('./lib/Intern');
 
 const staffData = [];
 
-const createEmployee = () => {
+const createManager = () => {
     inquirer.prompt([
 
         {
             type: 'input',
             message: 'What is the team managers name?',
             name: 'name'
+
         },
         {
             type: 'input',
             message: 'What is the team managers id?',
-            name: 'id'
+            name: 'id',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an id.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
@@ -33,22 +43,17 @@ const createEmployee = () => {
         {
             type: 'input',
             message: 'What is the team managers office number?',
-            name: 'office'
+            name: 'officeNumber'
         }
-       
+
     ]
     ).then((answers) => {
-        const { name } = answers
-        const { id } = answers
-        const { email } = answers
-        const { office } = answers
-        const { adding } = answers
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        staffData.push(manager);
 
-        if ( === ) {
-            createEngineer();
-        } else if ('intern' === intern) {
-            createIntern();
-        }
+
+
+
 
     })
 }
@@ -56,13 +61,15 @@ const createEmployee = () => {
 function addingTeam() {
     inquirer.prompt([
         {
-            type: 'list',
-            message: 'What type of team member would you like to add?',
+            type: 'confirm',
+            message: 'Would you like to add a new team member',
             name: 'adding',
 
             choices: ['Manager', 'Engineer', 'Intern']
         }
-    ])
+    ]).then((answers) => {
+        const { adding } = answers
+    })
 }
 
 function createIntern() {
@@ -84,10 +91,10 @@ function createIntern() {
         },
         {
             type: 'input',
-            message: 'What is the team interns office number?',
-            name: 'office'
+            message: 'What is the school they attend?',
+            name: 'School'
         }
-       
+
     ])
 }
 
@@ -110,13 +117,13 @@ function createEngineer() {
         },
         {
             type: 'input',
-            message: 'What is the team engineers office number?',
-            name: 'office'
+            message: 'What is the team engineers Github?',
+            name: 'Github'
         }
     ])
 }
 
 
-createEmployee();
+
 
 

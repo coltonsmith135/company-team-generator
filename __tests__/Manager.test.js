@@ -1,6 +1,7 @@
 const Manager = require('../lib/Manager');
 
 
+
 test('Testing class Manager structure', () => {
     const e = new Manager();
     expect(typeof(e)).toBe('object');
@@ -13,7 +14,10 @@ test('Checking testname to be name', () => {
 });
 
 test('Checking testId to be id', ()=> {
+    const name = 'colton';
     const testId = 40;
+    const email = 'colton@yahoo.com'
+    const officeNumber = 23;
     const i = new Manager(testId);
     expect(i.id).toBe(testId);
 });
