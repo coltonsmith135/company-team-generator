@@ -77,8 +77,8 @@ const createManager = () => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         staffData.push(manager);
 
-console.log(manager);
-addingTeam();
+        console.log(manager);
+        addingTeam();
 
 
     })
@@ -92,12 +92,34 @@ function addingTeam() {
             name: 'addMember'
         }
     ]).then((answers) => {
-        if(addMember === true) {
+        if (answers.addMember === true) {
             chooseRole();
         } else {
-            generateHTML();
+            fs.writeFile('index.html', generateHTML, (err) =>
+      err ? console.log(err) : console.log('Successfully created index.html!'))
+   
         }
     })
+}
+
+function chooseRole() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            message: 'What type of team member would you like to add?',
+            name: 'roles',
+
+            choices: [Engineer, Intern]
+        }
+    ]).then((answers) => {
+    if (answers.roles === 'Engineer') {
+    createEngineer();
+    }
+    if(answers.roles === 'Intern') {
+        createIntern();
+    }
+})
+
 }
 
 function createIntern() {
@@ -162,6 +184,7 @@ function createIntern() {
     ]).then((answers) => {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
         staffData.push(intern);
+        addingTeam();
     })
 }
 
@@ -226,7 +249,42 @@ function createEngineer() {
     ]).then((answers) => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
         staffData.push(engineer);
+        addingTeam();
     })
 }
 
+const staffCards = []
+
+const cardMaker = (staffData) => {
+    let memberRole = ``
+    staffData.forEach((person) => {
+
+        if (person.role === 'Manager') {
+            memberRole = `Office Number: ${person.officeNumber}`
+        }
+        if (person.role === 'Engineer') {
+            memberRole = `Github: ${person.github}`
+        }
+        if (person.role === 'Intern') {
+            memberRole = `School: ${person.school}`
+        }
+
+        let card = ` <div class="card employee-card">
+        <div class="card-head">
+            <h2 class="card-title">${person.name}</h2>
+            <h3 class="card-title"><i class="fas fa-mug-hot mr-2">${person.role}</i></h3>
+        </div>
+        <div class="card-body">
+            <ul class="info">
+               <li class="info-item">${person.id}</li>
+               <li class="info-item">${person.email}</li>
+               <li class="info-item">${memberRole}</li>
+            </ul>
+        </div>
+    </div>`
+
+        staffCards.push(card)
+    })
+    console.log(staffCards)
+}
 createManager();

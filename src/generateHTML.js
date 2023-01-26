@@ -43,3 +43,5 @@ const generateHTML =(staffCards) =>{ `<!doctype html>
 
 </html>`
 }
+
+module.exports = generateHTML;
