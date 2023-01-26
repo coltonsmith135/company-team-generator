@@ -18,7 +18,16 @@ const createManager = () => {
         {
             type: 'input',
             message: 'What is the team managers name?',
-            name: 'name'
+            name: 'name',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter a name.';
+
+                } else {
+                    return true;
+                }
+            }
 
         },
         {
@@ -38,21 +47,38 @@ const createManager = () => {
         {
             type: 'input',
             message: 'What is the team managers email?',
-            name: 'email'
+            name: 'email',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an email.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the team managers office number?',
-            name: 'officeNumber'
+            name: 'officeNumber',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an office number.';
+
+                } else {
+                    return true;
+                }
+            }
         }
 
-    ]
-    ).then((answers) => {
+    ]).then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         staffData.push(manager);
 
-
-
+console.log(manager);
+addingTeam();
 
 
     })
@@ -62,13 +88,15 @@ function addingTeam() {
     inquirer.prompt([
         {
             type: 'confirm',
-            message: 'Would you like to add a new team member',
-            name: 'adding',
-
-            choices: ['Manager', 'Engineer', 'Intern']
+            message: 'Would you like to add another team member',
+            name: 'addMember'
         }
     ]).then((answers) => {
-        const { adding } = answers
+        if(addMember === true) {
+            chooseRole();
+        } else {
+            generateHTML();
+        }
     })
 }
 
@@ -77,25 +105,64 @@ function createIntern() {
         {
             type: 'input',
             message: 'What is the team interns name?',
-            name: 'name'
+            name: 'name',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter a name.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the team interns id?',
-            name: 'id'
+            name: 'id',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an id.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the team interns email?',
-            name: 'email'
+            name: 'email',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an email.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the school they attend?',
-            name: 'School'
+            name: 'school',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter a school.';
+
+                } else {
+                    return true;
+                }
+            }
         }
 
-    ])
+    ]).then((answers) => {
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+        staffData.push(intern);
+    })
 }
 
 function createEngineer() {
@@ -103,27 +170,63 @@ function createEngineer() {
         {
             type: 'input',
             message: 'What is the team engineers name?',
-            name: 'name'
+            name: 'name',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter a name.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the team engineers id?',
-            name: 'id'
+            name: 'id',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an id.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the team engineers email?',
-            name: 'email'
+            name: 'email',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter an email.';
+
+                } else {
+                    return true;
+                }
+            }
         },
         {
             type: 'input',
             message: 'What is the team engineers Github?',
-            name: 'Github'
+            name: 'github',
+            validate: (answer) => {
+
+                if (!answer) {
+                    return 'please enter a github username';
+
+                } else {
+                    return true;
+                }
+            }
         }
-    ])
+    ]).then((answers) => {
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        staffData.push(engineer);
+    })
 }
 
-
-
-
-
+createManager();

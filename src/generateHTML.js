@@ -1,4 +1,4 @@
-`<!doctype html>
+const generateHTML =(staffCards) =>{ `<!doctype html>
 <html lang="en">
 
 <head>
@@ -28,48 +28,7 @@
         <div class="row">
             <div class="team-group col-12 d-flex justify-content-center">
 
-        <div class="card employee-card">
-            <div class="card-head">
-                <h2 class="card-title">colton</h2>
-                <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
-            </div>
-            <div class="card-body">
-                <ul class="info">
-                   <li class="info-item">ID: 5</li>
-                   <li class="info-item">Email: coltonsmith135@yahoo.com</li>
-                   <li class="info-item">Office Number: 23</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card employee-card">
-            <div class="card-head">
-                <h2 class="card-title">Natasha</h2>
-                <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>Engineer</h3>
-            </div>
-            <div class="card-body">
-                <ul class="info">
-                   <li class="info-item">ID: 2</li>
-                   <li class="info-item">Email: natashaamber3098@yahoo.com</li>
-                   <li class="info-item">Office Number: 3</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card employee-card">
-            <div class="card-head">
-                <h2 class="card-title">Nathan</h2>
-                <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>intern</h3>
-            </div>
-            <div class="card-body">
-                <ul class="info">
-                   <li class="info-item">ID: 13</li>
-                   <li class="info-item">Email: randompuddle@yahoo.com</li>
-                   <li class="info-item">Office Number: 22</li>
-                </ul>
-            </div>
-        </div>
-
+        ${staffCards}
         
         
 
@@ -83,3 +42,4 @@
 </body>
 
 </html>`
+}
