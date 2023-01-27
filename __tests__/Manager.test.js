@@ -1,35 +1,30 @@
 const Manager = require('../lib/Manager');
 
 
+describe('Manager class', () => {
+    test('Testing class Manager structure', () => {
+        const e = new Manager();
+        expect(typeof (e)).toBe('object');
+    });
 
-test('Testing class Manager structure', () => {
-    const e = new Manager();
-    expect(typeof(e)).toBe('object');
-});
 
-test('Checking testname to be name', () => {
-    const testName = 'colton';
-    const e = new Manager(testName);
-    expect(e.name).toBe(testName);
-});
+    it('Checking testname to be name', () => {
+        const name = new Manager('natasha')
+        expect(name(this.name)).toBe('natasha')
+    });
 
-test('Checking testId to be id', ()=> {
-    const name = 'colton';
-    const testId = 40;
-    const email = 'colton@yahoo.com'
-    const officeNumber = 23;
-    const i = new Manager(testId);
-    expect(i.id).toBe(testId);
-});
+    test('Checking testId to be id', () => {
+        const id = new Manager('110')
+        expect(this.id).toBe(id)
+    });
 
-test('Checking testEmail to be email', () => {
-    const testEmail = 'colton@gmail.com';
-    const e = new Manager(testEmail);
-    expect(e.email).toBe(testEmail);
-});
+    it('Checking testEmail to be email', () => {
+        const email = new Manager('natasha@yahoo.com')
+        expect(Manager([this.email])).toBe(email)
+    });
 
-test('Checking officeNum to be officeNumber', () => {
-    const officeNum = 75;
-    const e = new Manager(officeNum);
-    expect(e.officeNumber).toBe(officeNum);
+    it('Checking officeNum to be officeNumber', () => {
+        const officeNum = new Manager('450')
+        expect(Manager([this.getOfficeNumber()])).toBe(officeNum)
+    })
 })

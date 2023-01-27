@@ -5,26 +5,19 @@ test('Testing class Engineer structure', () => {
     expect(typeof(e)).toBe('object');
 });
 
-test('Checking testname to be name', () => {
-    const testName = 'colton';
-    const e = new Engineer(testName);
-    expect(e.name).toBe(testName);
+
+it('Checking testname to be name', () => {
+   expect(Engineer([this.name])).toBe('mikey')
 });
 
 test('Checking testId to be id', ()=> {
-    const testId = 40;
-    const i = new Engineer(testId);
-    expect(i.id).toBe(testId);
+   expect(Engineer([this.id])).toBe(660)
 });
 
 test('Checking testEmail to be email', () => {
-    const testEmail = 'colton@gmail.com';
-    const e = new Engineer(testEmail);
-    expect(e.email).toBe(testEmail);
+    expect(Engineer([this.email])).toBe('mike@yahoo.com')
 });
 
-test('Checking officeNum to be officeNumber', () => {
-    const officeNum = 75;
-    const e = new Engineer(officeNum);
-    expect(e.officeNumber).toBe(officeNum);
+test('Checking github to be github', () => {
+    expect(Engineer([this.getGithub()])).toBe('mikey135')
 })

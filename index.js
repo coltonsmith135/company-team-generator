@@ -96,13 +96,13 @@ function addingTeam() {
         if (answers.addMember === true) {
             chooseRole();
         } else {
-            console.log(staffData)
+            // console.log(staffData)
             cardMaker(staffData);
             const createHTML = generateHTML(staffString)
 
             fs.writeFile('index.html', createHTML, (err) =>
                 err ? console.log(err) : console.log('Successfully created index.html!'))
-            console.log(createHTML)
+            // console.log(createHTML)
 
         }
     })
@@ -265,7 +265,7 @@ let   staffString = ''
 const cardMaker = (staffData) => {
     let memberRole = ``
     staffData.forEach((person) => {
-     console.log(person.getRole())
+    //  console.log(person.getRole())
         if (person.getRole() === 'Manager') {
             memberRole = `Office Number: ${person.officeNumber}`
         }
@@ -283,8 +283,8 @@ const cardMaker = (staffData) => {
         </div>
         <div class="card-body">
             <ul class="info">
-               <li class="info-item">Id:${person.id}</li>
-               <li class="info-item">Email:${person.email}</li>
+               <li class="info-item">Id: ${person.id}</li>
+               <li class="info-item"><a href="https://yahoo.com/${person.email}"> Email: ${person.email}</a></li>
                <li class="info-item">${memberRole}</li>
             </ul>
         </div>
@@ -293,6 +293,6 @@ const cardMaker = (staffData) => {
         staffCards.push(card)
     })
     staffString = staffCards.join('')
-    console.log(staffString)
+    // console.log(staffString)
 }
 createManager();
