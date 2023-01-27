@@ -1,5 +1,4 @@
-const generateHTML =(staffCards) => { 
-    return `<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -29,7 +28,19 @@ const generateHTML =(staffCards) => {
         <div class="row">
             <div class="team-group col-12 d-flex justify-content-center">
 
-        ${staffCards}
+         <div class="card employee-card">
+        <div class="card-head">
+            <h2 class="card-title">colton</h2>
+            <h3 class="card-title"><i class="fas fa-mug-hot mr-2">Manager</i></h3>
+        </div>
+        <div class="card-body">
+            <ul class="info">
+               <li class="info-item">23</li>
+               <li class="info-item">c@yahoo.com</li>
+               <li class="info-item">Office Number: 24</li>
+            </ul>
+        </div>
+    </div>
         
         
 
@@ -42,7 +53,4 @@ const generateHTML =(staffCards) => {
         crossorigin="anonymous"></script>
 </body>
 
-</html>`
-}
-
-module.exports = generateHTML;
+</html>

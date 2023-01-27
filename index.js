@@ -12,6 +12,7 @@ const Intern = require('./lib/Intern');
 
 const staffData = [];
 
+
 const createManager = () => {
     inquirer.prompt([
 
@@ -95,9 +96,14 @@ function addingTeam() {
         if (answers.addMember === true) {
             chooseRole();
         } else {
-            fs.writeFile('index.html', generateHTML, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!'))
-   
+            console.log(staffData)
+            cardMaker(staffData);
+            const createHTML = generateHTML(staffString)
+
+            fs.writeFile('index.html', createHTML, (err) =>
+                err ? console.log(err) : console.log('Successfully created index.html!'))
+            console.log(createHTML)
+
         }
     })
 }
@@ -112,13 +118,13 @@ function chooseRole() {
             choices: [Engineer, Intern]
         }
     ]).then((answers) => {
-    if (answers.roles === 'Engineer') {
-    createEngineer();
-    }
-    if(answers.roles === 'Intern') {
-        createIntern();
-    }
-})
+        if (answers.roles === 'Engineer') {
+            createEngineer();
+        }
+        if (answers.roles === 'Intern') {
+            createIntern();
+        }
+    })
 
 }
 
@@ -254,30 +260,31 @@ function createEngineer() {
 }
 
 const staffCards = []
+let   staffString = ''
 
 const cardMaker = (staffData) => {
     let memberRole = ``
     staffData.forEach((person) => {
-
-        if (person.role === 'Manager') {
+     console.log(person.getRole())
+        if (person.getRole() === 'Manager') {
             memberRole = `Office Number: ${person.officeNumber}`
         }
-        if (person.role === 'Engineer') {
+        if (person.getRole() === 'Engineer') {
             memberRole = `Github: ${person.github}`
         }
-        if (person.role === 'Intern') {
+        if (person.getRole() === 'Intern') {
             memberRole = `School: ${person.school}`
         }
 
         let card = ` <div class="card employee-card">
         <div class="card-head">
             <h2 class="card-title">${person.name}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-2">${person.role}</i></h3>
+            <h3 class="card-title"><i class="fas fa-mug-hot mr-2">${person.getRole()}</i></h3>
         </div>
         <div class="card-body">
             <ul class="info">
-               <li class="info-item">${person.id}</li>
-               <li class="info-item">${person.email}</li>
+               <li class="info-item">Id:${person.id}</li>
+               <li class="info-item">Email:${person.email}</li>
                <li class="info-item">${memberRole}</li>
             </ul>
         </div>
@@ -285,6 +292,7 @@ const cardMaker = (staffData) => {
 
         staffCards.push(card)
     })
-    console.log(staffCards)
+    staffString = staffCards.join('')
+    console.log(staffString)
 }
 createManager();
